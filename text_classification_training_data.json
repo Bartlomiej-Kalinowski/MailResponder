@@ -1,0 +1,332 @@
+[
+  {
+    "text": "Dear Sir or Madam, I am writing to inquire about the procedure for appealing a grade I received in the Advanced Mathematics course. Thank you for your assistance. Yours sincerely, John Smith",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Dean's Office, Could you please provide information regarding the steps necessary to request a grade revision for the English Literature class? Thank you for your support. Yours faithfully, Mary Johnson",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to request guidance on how to initiate an appeal concerning my final grade in the Economics course. I look forward to your reply. Yours sincerely, Robert Williams",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Dean's Office, I am writing to request clarification on how to correct a potential mistake in my final grade for the Physics course. Thank you for your time. Yours sincerely, Patricia Brown",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Sir or Madam, I recently reviewed my results and noticed a possible error in my grade for the Law course. Could you please explain the appeal process? Yours faithfully, Michael Jones",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Dean's Office, I would like to ask about the procedure for contesting the final mark awarded in my Chemistry class. Thank you for your help. Yours sincerely, Linda Garcia",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Sir or Madam, I am contacting you to request information on how to appeal the grade I received in the History of Art course. Thank you for your assistance. Yours sincerely, William Martinez",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Dean's Office, Could you please inform me how to request a formal review of my Computer Science final grade? Thank you in advance. Yours faithfully, Elizabeth Rodriguez",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to know the procedure for contesting my final assessment in the Engineering course. I look forward to your guidance. Yours sincerely, David Hernandez",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Dean's Office, I am seeking advice regarding the process for appealing my Psychology grade. Thank you for your time. Yours faithfully, Jennifer Lopez",
+    "label": "grade_change"
+  },
+
+  {
+    "text": "Dear Sir or Madam, Could you please inform me about the current opening hours of the Dean's Office? Thank you for your assistance. Yours sincerely, Christopher Gonzalez",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Dean's Office, I would like to ask about the Dean's Office working hours during the examination period. Thank you for your reply. Yours faithfully, Jessica Wilson",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Sir or Madam, Could you provide the office hours for the next semester? Thank you in advance. Yours sincerely, Joshua Anderson",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Dean's Office, I am writing to confirm the office hours during the upcoming holiday period. Thank you for your support. Yours faithfully, Amanda Thomas",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Sir or Madam, Could you please confirm the Dean's Office schedule for the following month? Thank you for your time. Yours sincerely, Matthew Taylor",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Dean's Office, I would like to inquire about the regular opening hours throughout the academic year. Thank you for your assistance. Yours faithfully, Sarah Moore",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Sir or Madam, I am writing to ask if there are any changes to the office hours during the summer term. Thank you for your support. Yours sincerely, Nicholas Jackson",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Dean's Office, Could you please advise me on the Dean's Office opening times during the registration period? Thank you very much. Yours faithfully, Megan White",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to confirm if the Dean's Office will be open during public holidays. Thank you for your help. Yours sincerely, Andrew Harris",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Dean's Office, Could you kindly inform me about any changes to the office hours in case of emergency closures? Thank you. Yours faithfully, Emily Martin",
+    "label": "office_hours"
+  },
+
+  {
+    "text": "Dear Sir or Madam, I would like to inquire about scholarship opportunities available for undergraduate students. Thank you for your assistance. Yours sincerely, Brian Thompson",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Dean's Office, Could you please provide information on merit-based scholarships offered by the university? Thank you very much. Yours faithfully, Laura Scott",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Sir or Madam, I am writing to request information about financial aid and available scholarships. Thank you for your help. Yours sincerely, Kevin Adams",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Dean's Office, Could you please advise me about the deadlines for submitting scholarship applications? Thank you for your assistance. Yours faithfully, Olivia Baker",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to know if there are scholarships available for international students. Thank you for your time. Yours sincerely, Ethan Carter",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Dean's Office, I am writing to ask for information about need-based scholarships and the application process. Thank you very much. Yours faithfully, Chloe Mitchell",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Sir or Madam, Could you please inform me if part-time students are eligible for university scholarships? Thank you for your reply. Yours sincerely, Daniel Perez",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Dean's Office, I would like to request information about scholarships based on academic achievement. Thank you for your assistance. Yours faithfully, Zoe Roberts",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Sir or Madam, I am writing to ask what documents are required to apply for a university scholarship. Thank you for your help. Yours sincerely, Ryan Turner",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Dean's Office, Could you please advise me about the process for renewing an existing scholarship? Thank you very much. Yours faithfully, Natalie Phillips",
+    "label": "scholarship"
+  },
+
+  {
+    "text": "Dear Sir or Madam, I am writing to inquire about the procedure for extending the validity of my student ID card. Thank you for your assistance. Yours sincerely, Samuel Campbell",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Dean's Office, Could you please advise me on the process for renewing my student ID card? Thank you for your support. Yours faithfully, Rebecca Parker",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to request information about how to extend my student ID card. Thank you for your guidance. Yours sincerely, Brandon Evans",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Dean's Office, Could you kindly inform me about the steps to renew my student ID for the new academic year? Thank you for your time. Yours faithfully, Madison Edwards",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Sir or Madam, Please advise me on the necessary documents to renew my student ID card. Thank you very much. Yours sincerely, Alexander Collins",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Dean's Office, I am writing to ask whether it is possible to extend my student ID card remotely. Thank you for your assistance. Yours faithfully, Victoria Stewart",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to inquire about any fees associated with extending my student ID card. Thank you for your help. Yours sincerely, Joseph Sanchez",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Dean's Office, Could you please confirm whether the ID extension service is available during weekends? Thank you for your support. Yours faithfully, Abigail Morris",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Sir or Madam, I am contacting you to ask about the specific office hours dedicated to student ID renewals. Thank you for your time. Yours sincerely, Gavin Rogers",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Dean's Office, Could you kindly inform me about the deadline for renewing student ID cards? Thank you for your assistance. Yours faithfully, Hailey Cook",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to request clarification regarding the procedure for appealing my grade in the Advanced Calculus course. Kindly provide the necessary steps for initiating the appeal. Yours faithfully, Jennifer Harris",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Dean's Office, I am writing to inquire about the steps required to contest my final grade in the Computer Science course. Could you please provide the necessary details and documents for the appeal process? Yours sincerely, David Peterson",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Sir or Madam, I am seeking information on how to appeal the grade I received in the Physics course. Please outline the process and any required documentation. Yours faithfully, Emily Clarke",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Dean's Office, I would like to request information on how to rectify a potential error in my grade for the History course. Kindly provide the relevant procedure for grade appeals. Yours sincerely, Richard Adams",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to inquire about the steps involved in appealing my grade in the Chemistry course. Could you provide me with the relevant details? Yours faithfully, Michael Taylor",
+    "label": "grade_change"
+  },
+
+  {
+    "text": "Dear Sir or Madam, Could you please confirm the operating hours of the Dean's Office during the examination period? This information will assist in scheduling visits. Yours sincerely, Sophia Robinson",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Dean's Office, I would like to confirm the office hours for the upcoming semester. Please provide this information at your earliest convenience. Yours faithfully, Mark Evans",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to request confirmation of the office hours during the summer break. Please provide the specific dates and times for your availability. Yours sincerely, James Brown",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Dean's Office, I would appreciate it if you could provide me with the updated office hours for the next academic year. This will help in planning my visits. Yours sincerely, Claire Mitchell",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Sir or Madam, I am writing to confirm the opening hours of the Dean's Office during the holiday season. Please let me know if there are any changes to the regular schedule. Yours faithfully, George Walker",
+    "label": "office_hours"
+  },
+
+  {
+    "text": "Dear Sir or Madam, Could you please provide detailed information regarding available scholarships for postgraduate students? I would appreciate any relevant documents and deadlines. Yours faithfully, Natalie Brooks",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Dean's Office, I would like to inquire about merit-based scholarships for students in the Faculty of Exact Sciences. Kindly provide the required steps and deadlines for application. Yours sincerely, Charles Green",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Sir or Madam, Please provide information on scholarships available to students with a high GPA. Additionally, include the necessary documentation and deadlines for submission. Yours faithfully, Daniel King",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Dean's Office, I am writing to inquire about scholarships available for international students. Could you kindly provide information regarding eligibility and application deadlines? Yours sincerely, Olivia Scott",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Sir or Madam, Could you provide information on need-based scholarships and the application procedure? I would appreciate any relevant details, including deadlines. Yours faithfully, Michael Davis",
+    "label": "scholarship"
+  },
+
+  {
+    "text": "Dear Sir or Madam, I would like to inquire about the procedure for extending my student ID card for the next academic year. Please provide detailed steps and required documents. Yours faithfully, Isabelle Wright",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Dean's Office, I would like to inquire about the process for renewing my student ID card for the upcoming academic year. Kindly provide the necessary steps and any associated fees. Yours sincerely, Nicholas White",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Sir or Madam, Please provide information regarding the process of renewing my student ID card remotely. I would appreciate details on how this can be arranged. Yours faithfully, Sarah Harris",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Dean's Office, Could you please inform me of the necessary documents for renewing my student ID card? Additionally, I would appreciate any information on potential fees for this process. Yours sincerely, Ethan Lewis",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Sir or Madam, I am writing to inquire about the necessary steps to extend my student ID card. Please include any associated documents and the required timeline for submission. Yours faithfully, Megan Hall",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Dean's Office, I am writing to inquire about the procedure for submitting a formal request to review my final grade in the Algorithms course. I believe there may have been a miscalculation during the grading process. I would be grateful if you could provide guidance on the next steps. Yours sincerely, Adam Nowak",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to formally request information on how to appeal a final grade I received in the Sociology course. I would appreciate if you could direct me to the appropriate documentation or forms. Yours faithfully, Katarzyna Lewandowska",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Dean’s Office, I am contacting you regarding a discrepancy I noticed in the final grade posted for my Statistics class. I would like to request a review, as I believe an assignment may not have been accounted for. Yours sincerely, Tomasz Kwiatkowski",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Sir or Madam, I respectfully request information about the possibility of a formal grade reevaluation for my course in International Law. I believe my case warrants further consideration. Thank you for your assistance. Yours faithfully, Monika Zielińska",
+    "label": "grade_change"
+  },
+  {
+    "text": "Dear Dean’s Office, I am writing to ask how I can initiate an official grade review for the recent Environmental Science exam. Could you please advise me on the required process? Yours sincerely, Paweł Dąbrowski",
+    "label": "grade_change"
+  },
+
+  {
+    "text": "Dear Sir or Madam, I would like to confirm the current opening hours of the Dean’s Office during the upcoming examination period. I need to visit in person to submit several documents. Yours faithfully, Julia Mazur",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Dean’s Office, Could you kindly inform me of any changes to the office hours during the summer term? I intend to collect some official transcripts. Yours sincerely, Jakub Wójcik",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Sir or Madam, I would appreciate it if you could let me know the regular working hours of the Dean’s Office for this semester. I plan to schedule a visit accordingly. Yours faithfully, Natalia Sokołowska",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Dean’s Office, I am writing to inquire whether the office will remain open during the national holiday next week. I need to complete a few administrative tasks. Yours sincerely, Michał Pawlak",
+    "label": "office_hours"
+  },
+  {
+    "text": "Dear Sir or Madam, Could you please confirm if the Dean’s Office is open during the weekend or on Saturdays in particular? I am unable to come during weekdays. Yours faithfully, Anna Walczak",
+    "label": "office_hours"
+  },
+
+  {
+    "text": "Dear Dean’s Office, I am writing to request information concerning the academic scholarship for students with outstanding results. I completed the previous academic year with a GPA of 4.85 and would like to know if I am eligible to apply. Yours sincerely, Michał Zieliński",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to ask for details regarding the merit-based scholarships available to undergraduate students. In particular, I am interested in the required criteria and application deadline. Yours faithfully, Aleksandra Kamińska",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Dean’s Office, I would appreciate it if you could provide guidance on applying for a scholarship for the upcoming academic year. I have consistently maintained high academic performance. Yours sincerely, Krzysztof Malinowski",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Sir or Madam, I am writing to inquire whether financial assistance is available for students who achieved academic excellence. Any information about eligibility and documentation would be appreciated. Yours faithfully, Zofia Nowicka",
+    "label": "scholarship"
+  },
+  {
+    "text": "Dear Dean’s Office, Could you kindly inform me of the necessary steps to renew my scholarship for the new academic year? I would like to ensure timely submission of all required forms. Yours sincerely, Bartosz Grabowski",
+    "label": "scholarship"
+  },
+
+  {
+    "text": "Dear Sir or Madam, I would like to ask about the procedure for extending the validity of my student ID card for the next semester. Could you please inform me whether the extension can be done online or if I need to visit the office in person? Yours faithfully, Anna Szymańska",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Dean’s Office, I am writing to inquire about the deadline for renewing student identification cards. I would appreciate details on the required documents as well. Yours sincerely, Wojciech Król",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Sir or Madam, Could you please confirm whether student ID renewals will be processed during the upcoming break? I will be in town and would like to complete it in that period. Yours faithfully, Magdalena Piątek",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Dean’s Office, I am reaching out to ask if there are any fees associated with renewing the student ID for the next academic term. Your clarification would be very helpful. Yours sincerely, Kacper Rutkowski",
+    "label": "student_id_extension"
+  },
+  {
+    "text": "Dear Sir or Madam, I would like to inquire whether it is possible to delegate someone to renew my student ID card on my behalf. I am currently abroad. Yours faithfully, Agnieszka Maj",
+    "label": "student_id_extension"
+  }
+]
+
