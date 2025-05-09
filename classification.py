@@ -9,12 +9,31 @@ from sklearn.metrics import classification_report
 import joblib  # for saving and loading naive bayes model for mail classification
 
 class Classifier(object):
+    """
+       Classifies student mail into one of several predefined categories using different methods.
+
+       Attributes:
+           res_bayes (int): Result of classification using Naive Bayes.
+           res_distilbert (int): Result of classification using DistilBERT.
+           res_manual (int): Result of manual classification.
+           comparison_compatibility (bool): True if DistilBERT and Naive Bayes agree.
+           nb_model(obj): Object that represents naive bayes model
+       """
     def __init__(self):
-        self.res_bayes = self.res_distilbert = res_manual = None
+        self.res_bayes = None
+        self.res_distilbert = None
+        self.res_manual = None
         self.comparison_compatibility = True
-        self.model = None
+        self.nb_model = None
 
     def classify_bayes(self, msg):
+        """
+           Classifies the message using Naive Bayes and writes classification result into the file with mail
+
+           :param msg: Plain text message body to classify.
+           :type msg: str
+           :return: None
+        """
         training_data_file = "text_classification_training_data.json" # path to a file with training data for mail classification
         # loading json file with training data and conversion it to Dataset type( defined in HuggingFace)
         mail_dataset = Dataset.from_json(training_data_file)
