@@ -60,7 +60,7 @@ class Classifier(object):
 
         # evaluation on test set
         y_pred = self.model.predict(x_test)
-        labels = [ "student_id_extension","grade_change", "office_hours", "scholarship"]
+        labels = ["student_id_extension","grade_change_from_other_university", "office_hours", "scholarship"]
         print(classification_report(y_test, y_pred, target_names=labels))
 
 

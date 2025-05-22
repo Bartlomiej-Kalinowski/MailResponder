@@ -1,43 +1,43 @@
 [
   {
     "text": "Dear Sir or Madam, I am writing to inquire about the procedure for appealing a grade I received in the Advanced Mathematics course. Thank you for your assistance. Yours sincerely, John Smith",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Dean's Office, Could you please provide information regarding the steps necessary to request a grade revision for the English Literature class? Thank you for your support. Yours faithfully, Mary Johnson",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Sir or Madam, I would like to request guidance on how to initiate an appeal concerning my final grade in the Economics course. I look forward to your reply. Yours sincerely, Robert Williams",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Dean's Office, I am writing to request clarification on how to correct a potential mistake in my final grade for the Physics course. Thank you for your time. Yours sincerely, Patricia Brown",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Sir or Madam, I recently reviewed my results and noticed a possible error in my grade for the Law course. Could you please explain the appeal process? Yours faithfully, Michael Jones",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Dean's Office, I would like to ask about the procedure for contesting the final mark awarded in my Chemistry class. Thank you for your help. Yours sincerely, Linda Garcia",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Sir or Madam, I am contacting you to request information on how to appeal the grade I received in the History of Art course. Thank you for your assistance. Yours sincerely, William Martinez",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Dean's Office, Could you please inform me how to request a formal review of my Computer Science final grade? Thank you in advance. Yours faithfully, Elizabeth Rodriguez",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Sir or Madam, I would like to know the procedure for contesting my final assessment in the Engineering course. I look forward to your guidance. Yours sincerely, David Hernandez",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Dean's Office, I am seeking advice regarding the process for appealing my Psychology grade. Thank you for your time. Yours faithfully, Jennifer Lopez",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
 
   {
@@ -164,23 +164,23 @@
   },
   {
     "text": "Dear Sir or Madam, I would like to request clarification regarding the procedure for appealing my grade in the Advanced Calculus course. Kindly provide the necessary steps for initiating the appeal. Yours faithfully, Jennifer Harris",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Dean's Office, I am writing to inquire about the steps required to contest my final grade in the Computer Science course. Could you please provide the necessary details and documents for the appeal process? Yours sincerely, David Peterson",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Sir or Madam, I am seeking information on how to appeal the grade I received in the Physics course. Please outline the process and any required documentation. Yours faithfully, Emily Clarke",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Dean's Office, I would like to request information on how to rectify a potential error in my grade for the History course. Kindly provide the relevant procedure for grade appeals. Yours sincerely, Richard Adams",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Sir or Madam, I would like to inquire about the steps involved in appealing my grade in the Chemistry course. Could you provide me with the relevant details? Yours faithfully, Michael Taylor",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
 
   {
@@ -247,23 +247,23 @@
   },
   {
     "text": "Dear Dean's Office, I am writing to inquire about the procedure for submitting a formal request to review my final grade in the Algorithms course. I believe there may have been a miscalculation during the grading process. I would be grateful if you could provide guidance on the next steps. Yours sincerely, Adam Nowak",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Sir or Madam, I would like to formally request information on how to appeal a final grade I received in the Sociology course. I would appreciate if you could direct me to the appropriate documentation or forms. Yours faithfully, Katarzyna Lewandowska",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Dean’s Office, I am contacting you regarding a discrepancy I noticed in the final grade posted for my Statistics class. I would like to request a review, as I believe an assignment may not have been accounted for. Yours sincerely, Tomasz Kwiatkowski",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Sir or Madam, I respectfully request information about the possibility of a formal grade reevaluation for my course in International Law. I believe my case warrants further consideration. Thank you for your assistance. Yours faithfully, Monika Zielińska",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
   {
     "text": "Dear Dean’s Office, I am writing to ask how I can initiate an official grade review for the recent Environmental Science exam. Could you please advise me on the required process? Yours sincerely, Paweł Dąbrowski",
-    "label": "grade_change"
+    "label": "grade_change_from_other_university"
   },
 
   {

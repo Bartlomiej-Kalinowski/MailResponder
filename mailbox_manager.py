@@ -11,6 +11,8 @@ from email.mime.multipart import MIMEMultipart # for structure of the message
 import shutil
 from abc import ABC, abstractmethod
 from googleapiclient.errors import HttpError
+from get_essential_info_from_text import *
+from response_generation import *
 
 
 # get content of unread students mails from deans office mailbox
@@ -26,7 +28,7 @@ class EmailReader(ABC):
 
 class MailSender(ABC):
     @abstractmethod
-    def generate_response(self):
+    def generate_simple_response(self):
         pass
 
     def send_message(self,service,  path_to_mail):
@@ -64,6 +66,9 @@ class ClientMailbox(EmailReader, MailSender):
         self.response = {"student_id_extension": "Response id", "grade_change": "response_grade",
                          "office_hours": "response_hours",
                          "scholarship": "res_scholarship"}
+        self.db_session = Database.make_db(r'DB_init\application.pdf')
+        self.response_generator = GptManager(self.db_session)
+        self.name_searcher = NameSearcher(self.db_session)
 
     def authorize(self, client_secrets_file):
         """
@@ -103,6 +108,7 @@ class ClientMailbox(EmailReader, MailSender):
         payload = email['payload'] # main info about  email
         headers = payload.get("headers") # header of an email
         parts = payload.get("parts") # parts of an email: attachments, text, images etc.
+        sender_essential_data = None
         if headers:
             # this section prints email basic info & creates a folder for the email
             for header in headers:
@@ -131,16 +137,22 @@ class ClientMailbox(EmailReader, MailSender):
                     body = part.get("body") # body of an email
                     data = body.get("data") # data email was received to the mailbox
                     if data:
-                        text = urlsafe_b64decode(data).decode() # changing format to print top the console
+                        mail_content = urlsafe_b64decode(data).decode() # changing format to print top the console
                         with open(f"EmailsToRespond\\Mail{which_mail}\\plain_text.txt", "w+") as pl:
-                            pl.write(text)
+                            pl.write(mail_content)
+                        sender_essential_data = self.name_searcher.text_ner_analizer(mail_content)
+
         else:
-            # Jeśli parts jest puste, pobierz treść z payload.body.data
+            # if parts is empty get content from payload.body.data
             body = payload.get("body", {}).get("data")
             if body:
-                text = urlsafe_b64decode(body).decode() # changing format to print top the console
+                mail_content = urlsafe_b64decode(body).decode() # changing format to print top the console
                 with open(f"EmailsToRespond\\Mail{which_mail}\\plain_text.txt", "w+") as pl:
-                    pl.write(text)
+                    pl.write(mail_content)
+                sender_essential_data = self.name_searcher.text_ner_analizer(mail_content)
+        with open(f"EmailsToRespond\\Mail{which_mail}\\personal_sender_data.json", "w+") as pers:
+            if sender_essential_data:
+                json.dump(sender_essential_data, pers, ensure_ascii=False, indent=4)
 
     def read_unread(self, service):
         """
@@ -159,7 +171,7 @@ class ClientMailbox(EmailReader, MailSender):
             self.read_message(service, msg, i)
         return False
 
-    def generate_response(self):
+    def generate_simple_response(self):
         """
             Generate response related to the result of mail classification using gpt model
             and write the response into the same directory where mail was saved
@@ -179,6 +191,9 @@ class ClientMailbox(EmailReader, MailSender):
                         with open(generated_response, 'w') as c:
                             c.write(str(self.response[mail_topic]))
                 dirs.clear()
+
+    def generate_ai_response(self):
+        self.response_generator.generate_responses()
 
     def clean_dir_with_mails(self):
         """
