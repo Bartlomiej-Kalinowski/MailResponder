@@ -1,7 +1,10 @@
 import abc
 import base64
+import mimetypes
 import os
+import re
 from base64 import urlsafe_b64decode, urlsafe_b64encode
+from email import mime
 from email.message import EmailMessage
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials # for authorization to Gmail
@@ -13,7 +16,15 @@ from abc import ABC, abstractmethod
 from googleapiclient.errors import HttpError
 from get_essential_info_from_text import *
 from response_generation import *
+import magic
 
+import base64
+
+def decode_base64(data):
+    missing_padding = len(data) % 4
+    if missing_padding:
+        data += '=' * (4 - missing_padding)
+    return base64.urlsafe_b64decode(data).decode('utf-8', errors='replace')
 
 # get content of unread students mails from deans office mailbox
 class EmailReader(ABC):
@@ -27,10 +38,39 @@ class EmailReader(ABC):
 
 
 class MailSender(ABC):
+    @classmethod
+    def generate_simple_response(cls, category, path, response_file):
+        """
+            Generate response related to the result of mail classification using gpt model
+            and write the response into the same directory where mail was saved
+
+            :return: None
+        """
+        # generating responses and writing them to appriopriate files
+        # creating file with the result of classification
+        with open("simple_responses.json", 'r', encoding='utf-8') as file:
+            response_dict = json.load(file)
+        with open(response_file, 'w+') as c:
+            c.write(str(response_dict[category]))
+
+    def add_attachments(self, path_to_dir_with_attachments, classification_result, msg):
+        for root, dirs, files in os.walk(path_to_dir_with_attachments):
+            for file in files:
+                if root ==  os.path.join(path_to_dir_with_attachments, classification_result):
+                    with open(os.path.join(root, file), "rb") as att:
+                        attachment_data = att.read()
+                        attachment_name = os.path.basename(os.path.join(root, file))
+                        msg.add_attachment(
+                            attachment_data,
+                            maintype="application",
+                            subtype="octet-stream",
+                            filename=attachment_name)
+
     @abstractmethod
-    def generate_simple_response(self):
+    def generate_ai_response(self):
         pass
 
+    @abstractmethod
     def send_message(self,service,  path_to_mail):
         pass
 
@@ -52,7 +92,6 @@ class ClientMailbox(EmailReader, MailSender):
             body(str): main content of the email
             gmail_api_manager (object): A Resource object for interacting with the Gmail API service.
             path_to_dir(str): path to a directory to save emails read from the mailbox
-            response(dict): dict of emails responses related to classification result
     """
     def __init__(self):
         self.message = MIMEMultipart() # creating an object that represents an email with MIME interface
@@ -63,10 +102,7 @@ class ClientMailbox(EmailReader, MailSender):
         self.body = None # single mail data
         self.gmail_api_manager = None # enables to interact with Gmail API
         self.path_to_dir = "EmailsToRespond"
-        self.response = {"student_id_extension": "Response id", "grade_change": "response_grade",
-                         "office_hours": "response_hours",
-                         "scholarship": "res_scholarship"}
-        self.db_session = Database.make_db(r'DB_init\application.pdf')
+        self.db_session = Database.make_db(r'attachements/grade_change/application.pdf')
         self.response_generator = GptManager(self.db_session)
         self.name_searcher = NameSearcher(self.db_session)
 
@@ -93,6 +129,28 @@ class ClientMailbox(EmailReader, MailSender):
         self.gmail_api_manager = build('gmail', 'v1', credentials=self.credentials)  # creating GMAILS API manager
         return self.gmail_api_manager
 
+    def save_attachment(self, data_b64, original_filename, dir_with_mails, i):
+        # decoding data
+        try:
+            file_data = base64.urlsafe_b64decode(data_b64.encode('utf-8'))
+        except Exception as e:
+            print(f"Blad dekodowania base64: {e}")
+            return
+
+        # guess MIME type basing on binary data
+        mime_type = magic.from_buffer(file_data, mime=True)
+        extension = mimetypes.guess_extension(mime_type) or ''
+        print("Extension:\n", extension)
+        # save the attachement in mail directory
+        path = os.path.join(dir_with_mails, f"Attachement{i}.{extension}")
+        try:
+            with open(path, 'wb') as f:
+                f.write(file_data)
+            print(f"Zapisano plik: {path} (typ: {mime_type})")
+            i += 1
+        except Exception as e:
+            print(f"Błąd zapisu pliku: {e}")
+
     def read_message(self, service, message, which_mail):
         """
            Reads mails and saves them into the project directory
@@ -102,7 +160,7 @@ class ClientMailbox(EmailReader, MailSender):
            :param which_mail: number of read mail
            :return: None
         """
-        os.mkdir(f"EmailsToRespond\\Mail{which_mail}")
+        os.mkdir(rf"EmailsToRespond\Mail{which_mail}")
         email = service.users().messages().get(userId='me', id=message['id'], format='full').execute() # full info about mail
         # parts can be the message body, or attachments
         payload = email['payload'] # main info about  email
@@ -116,43 +174,77 @@ class ClientMailbox(EmailReader, MailSender):
                 value = header.get("value")
                 if name.lower() == 'from':
                     # we print the From address
-                    with open(f"EmailsToRespond\\Mail{which_mail}\\src_address.txt", "w+") as src:
+                    with open(rf"EmailsToRespond\Mail{which_mail}\src_address.txt", "w+") as src:
                         src.write(value)
                 if name.lower() == "to":
                     # we print the To address
-                    with open(f"EmailsToRespond\\Mail{which_mail}\\dst_address.txt", "w+") as dest:
+                    with open(rf"EmailsToRespond\Mail{which_mail}\dst_address.txt", "w+") as dest:
                         dest.write(value)
                 if name.lower() == "date":
                     # we print the date when the message was sent
-                    with open(f"EmailsToRespond\\Mail{which_mail}\\date.txt", "w+") as dt:
+                    with open(rf"EmailsToRespond\Mail{which_mail}\date.txt", "w+") as dt:
                         dt.write(value)
                 if name.lower() == "subject":
                     # we print the date when the message was sent
-                    with open(f"EmailsToRespond\\Mail{which_mail}\\subject.txt", "w+") as sb:
+                    with open(rf"EmailsToRespond\Mail{which_mail}\subject.txt", "w+") as sb:
                         sb.write(value)
         if parts:
+            i=0
             for part in parts:
-                if part.get("mimeType") == "text/plain":
-                    # if the email part is text plain
-                    body = part.get("body") # body of an email
-                    data = body.get("data") # data email was received to the mailbox
-                    if data:
-                        mail_content = urlsafe_b64decode(data).decode() # changing format to print top the console
-                        with open(f"EmailsToRespond\\Mail{which_mail}\\plain_text.txt", "w+") as pl:
-                            pl.write(mail_content)
-                        sender_essential_data = self.name_searcher.text_ner_analizer(mail_content)
+                print(rf"EmailsToRespond\Mail{which_mail}:\n", part)
+                mime1 = part.get("mimeType", "")
+                # if part.get("mimeType") == "text/plain":
+                #     # if the email part is text plain
+                #     body = part.get("body") # body of an email
+                #     data = body.get("data") # data email was received to the mailbox
+                #     if data:
+                #         mail_content = decode_base64(data)  # changing format to print top the console
+                #         print("Dane wiadomosci:\n", mail_content)
+                #         with open(f"EmailsToRespond\\Mail{which_mail}\\plain_text.txt", "w+") as pl:
+                #             pl.write(mail_content)
+                #         sender_essential_data = self.name_searcher.text_ner_analizer(mail_content)
+                try:
+                    if part.get("mimeType") == "text/plain":
+                        body = part.get("body")
+                        if body:  # body of an email
+                            data = body.get("data")  # data email was received to the mailbox
+                            if data:
+                                mail_content = urlsafe_b64decode(
+                                    data).decode()  # changing format to print top the console
+                                print("Dane wiadomosci:\n", mail_content)
+                                with open(rf"EmailsToRespond\Mail{which_mail}\plain_text.txt", "w+") as pl:
+                                    pl.write(mail_content)
+                                sender_essential_data = self.name_searcher.text_ner_analizer(mail_content)
+                    elif part.get("mimeType") == "multipart/alternative":
+                        internal_parts = part.get("parts")
+                        if internal_parts:  # body of an email
+                            for internal_part in internal_parts:
+                                if internal_part.get("mimeType") == "text/plain":
+                                    internal_body = internal_part.get("body")
+                                    if internal_body:  # body of an email
+                                        internal_data = internal_body.get("data")  # data email was received to the mailbox
+                                        if internal_data:
+                                            mail_content = decode_base64(internal_data)  # changing format to print top the console
+                                            print("Dane wiadomosci:\n", mail_content)
+                                            with open(rf"EmailsToRespond\Mail{which_mail}\plain_text.txt", "w+") as pl:
+                                                pl.write(mail_content)
+                                            sender_essential_data = self.name_searcher.text_ner_analizer(mail_content)
+                    elif re.match(r"application/\w+", mime1):
+                        body = part.get("body")
+                        if body:  # body of an email
+                            if part.get("body").get("attachmentId"):
+                                att_id = part.get("body").get("attachmentId")
+                                att = service.users().messages().attachments().get(userId="me",  messageId=message['id'],                                                                                      id=att_id).execute()
+                                data_b64 = att['data']
+                                self.save_attachment(data_b64,part['filename'],rf"EmailsToRespond\Mail{which_mail}",i )
+                    else:
+                        pass
+                except HttpError as error:
+                    att = None
 
-        else:
-            # if parts is empty get content from payload.body.data
-            body = payload.get("body", {}).get("data")
-            if body:
-                mail_content = urlsafe_b64decode(body).decode() # changing format to print top the console
-                with open(f"EmailsToRespond\\Mail{which_mail}\\plain_text.txt", "w+") as pl:
-                    pl.write(mail_content)
-                sender_essential_data = self.name_searcher.text_ner_analizer(mail_content)
-        with open(f"EmailsToRespond\\Mail{which_mail}\\personal_sender_data.json", "w+") as pers:
-            if sender_essential_data:
-                json.dump(sender_essential_data, pers, ensure_ascii=False, indent=4)
+            with open(f"EmailsToRespond\\Mail{which_mail}\\personal_sender_data.json", "w+") as pers:
+                if sender_essential_data:
+                    json.dump(sender_essential_data, pers, ensure_ascii=False, indent=4)
 
     def read_unread(self, service):
         """
@@ -170,27 +262,6 @@ class ClientMailbox(EmailReader, MailSender):
             i += 1
             self.read_message(service, msg, i)
         return False
-
-    def generate_simple_response(self):
-        """
-            Generate response related to the result of mail classification using gpt model
-            and write the response into the same directory where mail was saved
-
-            :return: None
-        """
-        # generating responses and writing them to appriopriate files
-        folder_path = "EmailsToRespond"
-        for root, dirs, files in os.walk(folder_path):
-            for file in files:
-                mail_text_file = os.path.join(root, file)
-                if file == "classification_result.txt":
-                    with open(mail_text_file, "r") as c_res:
-                        mail_topic = c_res.read()
-                        # creating file with the result of classification
-                        generated_response = os.path.join(root, "response.txt")
-                        with open(generated_response, 'w') as c:
-                            c.write(str(self.response[mail_topic]))
-                dirs.clear()
 
     def generate_ai_response(self):
         self.response_generator.generate_responses()
@@ -223,14 +294,15 @@ class ClientMailbox(EmailReader, MailSender):
             message = EmailMessage()
             with open (os.path.join(path_to_mail , "response.txt"), "r") as response:
                 message.set_content(response.read())
-
-
             with open (os.path.join(path_to_mail ,"src_address.txt"), "r") as to:
                 message["To"] = to.read()
             with open(os.path.join(path_to_mail , "dst_address.txt"), "r") as fr:
                 message["From"] = fr.read()
             with open(os.path.join(path_to_mail , "subject.txt"), "r") as subj:
                 message["Subject"] = subj.read()
+            with open(os.path.join(path_to_mail , "classification_result.txt"), "r") as res:
+                category = res.read()
+            self.add_attachments("attachements", category, message)
 
             # encoded message
             encoded_message = base64.urlsafe_b64encode(message.as_bytes()).decode()

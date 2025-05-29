@@ -10,7 +10,7 @@ def main():
     if not os.path.exists(main_path):
         os.mkdir(main_path)
     deans_office_mailbox.clean_dir_with_mails()
-    deans_office_mailbox.read_unread(service) # read unread mails from students, yet only mails with plain text, no attachements
+    deans_office_mailbox.read_unread(service) # read unread mails from students
     mail_classifier = Classifier()
     mail_classifier.classify_bayes("abcd")
     # deans_office_mailbox.generate_simple_response()

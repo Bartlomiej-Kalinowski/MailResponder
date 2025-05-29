@@ -75,7 +75,7 @@ class Classifier(object):
                         predicted_label = self.model.predict([content])
                         # creating file with the result of classification
                         classification_res_file = os.path.join(root, "classification_result.txt")
-                        with open(classification_res_file, 'w') as c:
+                        with open(classification_res_file, 'w+') as c:
                             c.write(str(predicted_label[0]))
                 dirs.clear()
 
