@@ -2,12 +2,31 @@ import requests
 import os
 from sympy import false
 from database_manager import *
+import json
 
 API_KEY = "ePpQoHNpsWS4ge3gDX2HL3V0O87tgeTx"
 API_URL = "https://api.mistral.ai/v1/chat/completions"
 
 class GptManager(object):
+    """
+      Manager class for generating responses to student emails using the Mistral AI API.
+
+      Attributes
+      ----------
+      database : Session
+          Database session used to query additional information such as office hours or scholarship details.
+      headers : dict
+          HTTP headers including authorization and content-type for API requests.
+      """
     def __init__(self, data_session):
+        """
+        Initializes the GptManager instance.
+
+        Parameters
+        ----------
+        data_session : Session
+            Database session for executing queries.
+        """
         self.database = data_session
         self.headers = {
             "Authorization": f"Bearer {API_KEY}",
@@ -15,6 +34,20 @@ class GptManager(object):
         }
 
     def generate_one_response(self, mail_category,mail_content, dir_to_write):
+        """
+        Generates a response based on the email category and content, then writes it to a file.
+        Sends a POST request to the Mistral AI API with a prompt tailored to the email category.
+        If the request fails, it falls back to a simple response generator from MailSender.
+
+        Parameters
+        ----------
+        mail_category : str
+            Category of the email (e.g. 'student_id_extension', 'grade_change_from_other_university', 'office_hours', 'scholarship').
+        mail_content : str
+            Content of the student's email used as input for response generation.
+        dir_to_write : str
+            Directory path where the generated response file will be saved.
+        """
         from mailbox_manager import MailSender
 
         if mail_category == 'student_id_extension':
@@ -42,7 +75,7 @@ class GptManager(object):
                 with open(os.path.join(dir_to_write, "response.txt"), 'w+') as r:
                     r.write(str(generated_email))
             else:
-                MailSender.generate_simple_response('scholarship', dir_to_write, os.path.join(dir_to_write, "response.txt"))
+                MailSender.generate_simple_response('student_id_extension', dir_to_write, os.path.join(dir_to_write, "response.txt"))
 
         elif mail_category == 'grade_change_from_other_university':
             data = {
@@ -68,7 +101,7 @@ class GptManager(object):
                 with open(os.path.join(dir_to_write, "response.txt"), 'w+') as r:
                     r.write(str(generated_email))
             else:
-                MailSender.generate_simple_response('scholarship', dir_to_write, os.path.join(dir_to_write, "response.txt"))
+                MailSender.generate_simple_response('grade_change_from_other_university', dir_to_write, os.path.join(dir_to_write, "response.txt"))
 
         elif mail_category == 'office_hours':
             all_hours = self.database.query(DeansOfficeHours).all()
@@ -89,7 +122,15 @@ class GptManager(object):
                 ],
                 "temperature": 0.7  # model creativity index
             }
-            MailSender.generate_simple_response('scholarship', dir_to_write,os.path.join(dir_to_write, "response.txt"))
+            response = requests.post(API_URL, headers=self.headers, json=data)
+            if response.status_code == 200:
+                result = response.json()
+                generated_email = result["choices"][0]["message"]["content"]
+                with open(os.path.join(dir_to_write, "response.txt"), 'w+') as r:
+                    r.write(str(generated_email))
+            else:
+                MailSender.generate_simple_response('office_hours', dir_to_write,
+                                                    os.path.join(dir_to_write, "response.txt"))
 
         elif mail_category == 'scholarship':
             all_scholarships = self.database.query(ScholarshipValue).all()
@@ -124,8 +165,19 @@ class GptManager(object):
             pass
 
 
-    def generate_responses(self):
-        folder_path = "EmailsToRespond"
+    def generate_responses(self, dir_name):
+        """
+        Processes all emails in the 'EmailsToRespond' folder by reading classification results
+        and plain text content, then generates and writes responses for each email.
+
+        Behavior
+        --------
+        Walks through the 'EmailsToRespond' directory recursively.
+        For each email folder containing both 'classification_result.txt' and 'plain_text.txt',
+        reads their content, calls generate_one_response to create a response,
+        and clears mail_topic and mail_content to process the next email.
+        """
+        folder_path = rf"EmailsToRespond\{dir_name}"
         mail_topic = None
         mail_content = None
         for root, dirs, files in os.walk(folder_path):
@@ -139,7 +191,7 @@ class GptManager(object):
                     with open(mail_pl_file, "r") as pl:
                         mail_content = pl.read()
                 if mail_topic and mail_content:
-                    self.generate_one_response(str(mail_topic), str(mail_content), root)
+                    self.generate_one_response(str(mail_topic), str(mail_content), folder_path)
                     mail_topic = None
                     mail_content = None
                 dirs.clear()

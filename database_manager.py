@@ -5,20 +5,38 @@ from sqlalchemy import (
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 import datetime
-import json
 
 class CombinedMetaClass(ABCMeta, DeclarativeMeta):
+    """
+    Metaclass combining ABCMeta and DeclarativeMeta to support both abstract base classes
+    and SQLAlchemy ORM declarative base functionality.
+    """
     pass
 
 Base = declarative_base(metaclass=CombinedMetaClass)
 
 class DeansOfficeTableInterface(metaclass = ABCMeta):
+    """
+    Abstract interface class for Dean's Office database tables.
+
+    Requires implementing classes to provide a method to convert
+    table instances to dictionary representation.
+    """
     @abstractmethod
     def table_to_dict(self):
         pass
 
 
 class DeansOfficeHours(Base, DeansOfficeTableInterface):
+    """
+    SQLAlchemy ORM model representing Dean's Office working hours.
+
+    Attributes:
+        id (int): Primary key, autoincremented.
+        weekday (str): Name of the weekday (e.g., 'Monday').
+        opening (datetime.time): Office opening time.
+        closing (datetime.time): Office closing time.
+    """
     __tablename__ = 'hours'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -28,6 +46,13 @@ class DeansOfficeHours(Base, DeansOfficeTableInterface):
 
     @classmethod
     def fill(cls, current_session):
+        """
+        Populate the 'hours' table with default working hours (8:00 to 15:00)
+        for weekdays Monday through Friday.
+
+        :param current_session: SQLAlchemy session to add records to.
+        :return: None
+        """
         weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
         for day in weekdays:
             current_session.add(DeansOfficeHours(
@@ -36,11 +61,12 @@ class DeansOfficeHours(Base, DeansOfficeTableInterface):
                 closing=datetime.time(15, 0)
             ))
 
-    @classmethod
-    def get_by_id(cls, session, record_id):
-        return session.query(cls).get(record_id)
-
     def table_to_dict(self):
+        """
+        Convert the instance data to dictionary format.
+
+        :return: dict with keys "day", "open_time", and "close_time"
+        """
         return {
             "day": self.weekday,
             "open_time": self.opening.strftime("%H:%M") if self.opening else None,
@@ -48,6 +74,15 @@ class DeansOfficeHours(Base, DeansOfficeTableInterface):
         }
 
 class ScholarshipValue(Base,  DeansOfficeTableInterface):
+    """
+    ORM model representing scholarship types and values.
+
+    Attributes:
+        id (int): Primary key, autoincremented.
+        kind (str): Type of scholarship (e.g., 'rectors scholarship').
+        money (float): Amount of money awarded.
+        grade_level (float): Minimum grade level required, nullable.
+    """
     __tablename__ = 'scholarship'
 
     id = Column(Integer, primary_key = True, autoincrement=True)
@@ -56,6 +91,11 @@ class ScholarshipValue(Base,  DeansOfficeTableInterface):
     grade_level = Column(Float, nullable = True)
 
     def table_to_dict(self):
+        """
+        Convert the scholarship instance to dictionary.
+
+        :return: dict with keys "id", "kind", "money", "grade_level"
+        """
         return {
             "id": self.id,
             "kind": self.kind,
@@ -64,6 +104,14 @@ class ScholarshipValue(Base,  DeansOfficeTableInterface):
         }
 
 class StudentList(Base,  DeansOfficeTableInterface):
+    """
+    ORM model representing a student record.
+
+    Attributes:
+        student_id (str): Primary key student identifier.
+        name (str): Student's first name.
+        surname (str): Student's surname.
+    """
     __tablename__ = 'students'
 
     student_id = Column(String, primary_key=True)
@@ -71,6 +119,11 @@ class StudentList(Base,  DeansOfficeTableInterface):
     surname = Column(String, nullable = False)
 
     def table_to_dict(self):
+        """
+        Convert the student record to dictionary format.
+
+        :return: dict with keys "student_id", "name", "surname"
+        """
         return {
             "student_id": self.student_id,
             "name": self.name,
@@ -79,9 +132,18 @@ class StudentList(Base,  DeansOfficeTableInterface):
 
 
 class Database(object):
+    """
+    Class for initializing the SQLite database and session.
+    """
     @classmethod
-    def make_db(cls, db_init_file):
-        # Tworzenie silnika bazy danych SQLite
+    def make_db(cls):
+        """
+        Initialize the SQLite database, create tables, and populate with
+        default data including office hours, scholarships, and student records.
+
+        :return: SQLAlchemy session instance connected to the database.
+        """
+        # creating SQLite engine
         engine = create_engine('sqlite:///deans_office.db')
 
         # Tworzenie wszystkich tabel
