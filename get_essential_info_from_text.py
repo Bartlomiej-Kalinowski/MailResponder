@@ -35,25 +35,25 @@ class NameSearcher(object):
         name = None
         surname = None
         essential_info = None
-        for word_dict in ner_results:
-            name = word_dict['word'].lower()
-            surname = word_dict['word'].lower()
-        student = self.session.query(StudentList).filter(
-            func.lower(StudentList.name) == name,
-            func.lower(StudentList.surname) == surname
-        ).first()
-        if student:
-            essential_info = {
-                'name': name,
-                'surname': surname,
-                'student_id': student.student_id
-            }
-        else:
-            essential_info = {
-                'name': name,
-                'surname': surname,
-                'student_id': '000000'
-            }
-        return essential_info
+        student = None
+        person_words = [ent['word'] for ent in ner_results if
+                        ent.get('entity', '').startswith('B-PER') or ent.get('entity', '').startswith('I-PER')]
+        for word_dict in person_words:
+            name = word_dict.lower()
+            for word_dict1 in person_words:
+                if word_dict == word_dict1:
+                    continue
+                surname = word_dict1.lower()
+                student = self.session.query(StudentList).filter(
+                    func.lower(StudentList.name) == name,
+                    func.lower(StudentList.surname) == surname
+                        ).first()
+                if student:
+                    return{
+                        'name': name,
+                        'surname': surname,
+                        'student_id': student.student_id
+                    }
+        return None
 
 

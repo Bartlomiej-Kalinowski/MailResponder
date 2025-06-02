@@ -142,7 +142,7 @@ class Application(Frame):
             if not student_dict or not self.check_if_student_exists(student_dict['student_id'], student_dict['name'],
                                                                     student_dict['surname']):
                 info_window = Toplevel()
-                Label(info_window, text=f"The sender ({student_dict['name']} {student_dict['surname']}) of the mail is not on the list of university students",
+                Label(info_window, text=f"The sender of the mail is not on the list of university students",
                       font=("Arial", 10)).grid(row=0, column=0, sticky="w", padx=10,
                                                pady=(10, 0))
                 Button(info_window, text="Ok", command=lambda: info_window.destroy()).grid(
