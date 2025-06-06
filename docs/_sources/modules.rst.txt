@@ -1,0 +1,13 @@
+MailResponder Modules
+=====================
+
+.. automodule:: main
+    :members:
+.. automodule:: mailbox_manager
+    :members:
+.. automodule:: classification
+    :members:
+.. automodule:: database_manager
+    :members:
+.. automodule:: get_essential_info_from_text
+    :members:
