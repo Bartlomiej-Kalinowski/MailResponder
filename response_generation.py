@@ -1,7 +1,7 @@
 import requests
 import os
 from sympy import false
-from database_manager import *
+from database_manager import  DeansOfficeHours, ScholarshipValue
 import json
 
 API_KEY = "ePpQoHNpsWS4ge3gDX2HL3V0O87tgeTx"

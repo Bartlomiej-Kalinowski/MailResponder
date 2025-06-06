@@ -1,9 +1,10 @@
-from mailbox_manager import *
-from classification import *
+from mailbox_manager import  ClientMailbox
+from classification import Classifier
 import re
 import os
+import json
 from tkinter import *
-from database_manager import *
+from database_manager import  StudentList
 
 """
 Main module for managing the Dean's Office email processing system.
@@ -21,7 +22,24 @@ Functions:
 """
 
 class Application(Frame):
+    """
+    Main GUI application class for browsing and responding to emails.
+
+    Args:
+        master: The Tkinter root window.
+        mailbox_manager: The mailbox manager object.
+
+    Methods:
+        create_widgets(win): Creates GUI widgets.
+        ...
+    """
     def __init__(self, master, mailbox_manager):
+        """
+                Initialize the application GUI.
+
+                :param master: The Tkinter root window.
+                :param mailbox_manager: Mailbox manager instance containing DB session and email methods.
+                """
         self.db_session = mailbox_manager.db_session
         super(Application, self).__init__(master)
         self.grid()
@@ -29,6 +47,11 @@ class Application(Frame):
         self.create_widgets(master)
 
     def create_widgets(self, win):
+        """
+                Create buttons and widgets for each email directory found in "EmailsToRespond".
+
+                :param win: The Tkinter window to place widgets on.
+                """
         Button(win, text="Exit", command=lambda: win.destroy()).grid(row=0, column=0, padx=5)
         i = 0
         row = 1
@@ -43,6 +66,18 @@ class Application(Frame):
 
 
     def create_one_widget(self, root_win, src_address,  date, subject , plain_text, i, dir_name, row):
+        """
+                Create one button widget representing an email.
+
+                :param root_win: Parent window for the button.
+                :param src_address: Email sender address.
+                :param date: Date of the email.
+                :param subject: Subject of the email.
+                :param plain_text: Email body text.
+                :param i: Index used for button positioning.
+                :param dir_name: Directory name representing the email.
+                :param row: Grid row for the button.
+                """
         col = i % 3  # ex. 0, 1, 0, 1, 0, 1,...
         btn = Button(root_win, text=dir_name,
                      command=lambda s=subject, f=src_address, b=plain_text, d=date:
@@ -51,6 +86,18 @@ class Application(Frame):
 
     @staticmethod
     def check_mail_dirs(dir_path):
+        """
+                Check a directory for required email data files and read their contents.
+
+                Expected files:
+                    - src_address.txt
+                    - date.txt
+                    - subject.txt
+                    - plain_text.txt
+
+                :param dir_path: Path to the email directory.
+                :return: List containing [src_address, date, subject, plain_text].
+                """
         if not os.path.isdir(dir_path):
             return 0
         # Iterate over files in each subdirectory
@@ -72,6 +119,15 @@ class Application(Frame):
         return [src_address, date, subject, plain_text]
 
     def open_mail_window(self, subject, sender, body, date,dir_name):
+        """
+                Open a new window displaying the email details and response options.
+
+                :param subject: Email subject.
+                :param sender: Email sender address.
+                :param body: Email body text.
+                :param date: Email date.
+                :param dir_name: Directory name representing the email.
+                """
         win = Toplevel()
         win.title(dir_name)
         Label(win, text=f"TITLE: {subject}", font=("Arial", 10)).grid(row=0, column=0, sticky="w", padx=10, pady=(10, 0))
@@ -92,6 +148,13 @@ class Application(Frame):
         Button(control_frame, text="Exit", command=lambda: win.destroy()).grid(row=0, column=3,padx=5)
 
     def get_edited_text(self,text_box,win, dir_name):
+        """
+               Get edited text from the text box and save it to response.txt, then close the window.
+
+               :param text_box: Tkinter Text widget containing the response text.
+               :param win: The edit response window.
+               :param dir_name: Directory name representing the email.
+               """
         content = text_box.get("1.0", "end-1c")
         win.destroy()
         path = rf"EmailsToRespond\{dir_name}\response.txt"
@@ -99,6 +162,11 @@ class Application(Frame):
             r.write(content)
 
     def edit_response(self, dir_name):
+        """
+                Open a window with a text box to edit the generated response.
+
+                :param dir_name: Directory name representing the email.
+                """
         # Tworzymy edytowalne pole tekstowe
         win = Toplevel()
         win.title("Edit response")
@@ -117,6 +185,14 @@ class Application(Frame):
 
 
     def check_if_student_exists(self, id_s, name, surname):
+        """
+               Check if a student with given ID, name, and surname exists in the database.
+
+               :param id_s: Student ID (case-insensitive).
+               :param name: Student's first name (case-insensitive).
+               :param surname: Student's surname (case-insensitive).
+               :return: True if student exists, False otherwise.
+               """
         all_students= self.db_session.query(StudentList).all()
         students_data = [s.table_to_dict() for s in all_students]
         for student in students_data:
@@ -125,11 +201,25 @@ class Application(Frame):
         return False
 
     def send_and_close(self,  win, _item_path, mail_win):
+        """
+               Send the email response and close the windows.
+
+               :param win: The confirmation dialog window.
+               :param _item_path: Path to the email directory.
+               :param mail_win: The email display window.
+               """
         self.mailbox.send_message(self.mailbox.service, _item_path)
         win.destroy()
         mail_win.destroy()
 
     def send_mail(self, main_path,  dir_name, mail_win):
+        """
+                Send the generated email response if conditions are met.
+
+                :param main_path: The base directory for emails.
+                :param dir_name: Directory name representing the email.
+                :param mail_win: The email display window.
+                """
         item_path = os.path.join(main_path, dir_name)
         response_file = os.path.join(item_path, "response.txt")
         if os.path.isdir(item_path) and os.path.isfile(response_file):
@@ -206,5 +296,8 @@ def main():
     root_win.mainloop()
     # graphic interface - end
 
-main()
 
+
+
+if __name__ == "__main__":
+    main()

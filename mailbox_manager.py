@@ -14,9 +14,11 @@ from email.mime.multipart import MIMEMultipart # for structure of the message
 import shutil
 from abc import ABC, abstractmethod
 from googleapiclient.errors import HttpError
-from get_essential_info_from_text import *
-from response_generation import *
+from get_essential_info_from_text import NameSearcher
+from response_generation import GptManager
+from database_manager import  Database
 import magic
+import json
 
 import base64
 

@@ -1,5 +1,5 @@
 from transformers import pipeline
-from database_manager import *
+from database_manager import  StudentList
 from sqlalchemy import func
 
 class NameSearcher(object):
