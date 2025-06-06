@@ -32,23 +32,34 @@
 
           <div class="body" role="main">
             
-  <section id="module-main">
-<span id="mailresponder-modules"></span><h1>MailResponder Modules<a class="headerlink" href="#module-main" title="Link to this heading">¶</a></h1>
+  <section id="mailresponder-modules">
+<h1>MailResponder Modules<a class="headerlink" href="#mailresponder-modules" title="Link to this heading">¶</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="main.Application">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">Application</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mailbox_manager</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.Application" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">Application</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mailbox_manager</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Main GUI application class for browsing and responding to emails.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>master: The Tkinter root window.
-mailbox_manager: The mailbox manager object.</p>
-</dd>
-<dt>Methods:</dt><dd><p>create_widgets(win): Creates GUI widgets.
-…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>master</strong> – The Tkinter root window.</p></li>
+<li><p><strong>mailbox_manager</strong> – The mailbox manager object.</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="main.Application.check_if_student_exists">
-<span class="sig-name descname"><span class="pre">check_if_student_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.Application.check_if_student_exists" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">win</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates GUI widgets.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">...</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">check_if_student_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surname</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Check if a student with given ID, name, and surname exists in the database.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -65,8 +76,8 @@ mailbox_manager: The mailbox manager object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="main.Application.check_mail_dirs">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_mail_dirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.Application.check_mail_dirs" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_mail_dirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Check a directory for required email data files and read their contents.</p>
 <dl class="simple">
 <dt>Expected files:</dt><dd><ul class="simple">
@@ -88,8 +99,8 @@ mailbox_manager: The mailbox manager object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="main.Application.create_one_widget">
-<span class="sig-name descname"><span class="pre">create_one_widget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_win</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plain_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.Application.create_one_widget" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_one_widget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_win</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plain_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create one button widget representing an email.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -108,8 +119,8 @@ mailbox_manager: The mailbox manager object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="main.Application.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">win</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.Application.create_widgets" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">win</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create buttons and widgets for each email directory found in “EmailsToRespond”.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -119,8 +130,8 @@ mailbox_manager: The mailbox manager object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="main.Application.edit_response">
-<span class="sig-name descname"><span class="pre">edit_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.Application.edit_response" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">edit_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_name</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Open a window with a text box to edit the generated response.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -130,8 +141,8 @@ mailbox_manager: The mailbox manager object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="main.Application.get_edited_text">
-<span class="sig-name descname"><span class="pre">get_edited_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_box</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.Application.get_edited_text" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_edited_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_box</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_name</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Get edited text from the text box and save it to response.txt, then close the window.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -145,8 +156,8 @@ mailbox_manager: The mailbox manager object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="main.Application.open_mail_window">
-<span class="sig-name descname"><span class="pre">open_mail_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sender</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.Application.open_mail_window" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">open_mail_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sender</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_name</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Open a new window displaying the email details and response options.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -162,8 +173,8 @@ mailbox_manager: The mailbox manager object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="main.Application.send_and_close">
-<span class="sig-name descname"><span class="pre">send_and_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">win</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_item_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mail_win</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.Application.send_and_close" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">send_and_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">win</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_item_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mail_win</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Send the email response and close the windows.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -177,8 +188,8 @@ mailbox_manager: The mailbox manager object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="main.Application.send_mail">
-<span class="sig-name descname"><span class="pre">send_mail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">main_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mail_win</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.Application.send_mail" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">send_mail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">main_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mail_win</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Send the generated email response if conditions are met.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -194,8 +205,8 @@ mailbox_manager: The mailbox manager object.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="main.main">
-<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.main" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Main function to run the Dean’s Office email handling process.</p>
 <p>Workflow:
 1. Initialize mailbox client and authorize with Gmail API.
@@ -217,17 +228,94 @@ mailbox_manager: The mailbox manager object.</p>
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mailbox_manager.</span></span><span class="sig-name descname"><span class="pre">ClientMailbox</span></span><a class="headerlink" href="#mailbox_manager.ClientMailbox" title="Link to this definition">¶</a></dt>
 <dd><p>Dean’s office mailbox manager.
 Enables authorization and uses the Gmail API.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>sender (str): The dean’s office mailbox address.
-recipient(str): Student’s mailbox address
-message(MIMEMultipart):  object that represents an email
-credentials (str): authorization data to gmail account
-subject(str): subject of an email
-body(str): main content of the email
-gmail_api_manager (object): A Resource object for interacting with the Gmail API service.
-path_to_dir(str): path to a directory to save emails read from the mailbox</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mailbox_manager.ClientMailbox.sender">
+<span class="sig-name descname"><span class="pre">sender</span></span><a class="headerlink" href="#mailbox_manager.ClientMailbox.sender" title="Link to this definition">¶</a></dt>
+<dd><p>The dean’s office mailbox address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mailbox_manager.ClientMailbox.recipient">
+<span class="sig-name descname"><span class="pre">recipient</span></span><a class="headerlink" href="#mailbox_manager.ClientMailbox.recipient" title="Link to this definition">¶</a></dt>
+<dd><p>Student’s mailbox address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mailbox_manager.ClientMailbox.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#mailbox_manager.ClientMailbox.message" title="Link to this definition">¶</a></dt>
+<dd><p>object that represents an email</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>MIMEMultipart</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mailbox_manager.ClientMailbox.credentials">
+<span class="sig-name descname"><span class="pre">credentials</span></span><a class="headerlink" href="#mailbox_manager.ClientMailbox.credentials" title="Link to this definition">¶</a></dt>
+<dd><p>authorization data to gmail account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mailbox_manager.ClientMailbox.subject">
+<span class="sig-name descname"><span class="pre">subject</span></span><a class="headerlink" href="#mailbox_manager.ClientMailbox.subject" title="Link to this definition">¶</a></dt>
+<dd><p>subject of an email</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mailbox_manager.ClientMailbox.body">
+<span class="sig-name descname"><span class="pre">body</span></span><a class="headerlink" href="#mailbox_manager.ClientMailbox.body" title="Link to this definition">¶</a></dt>
+<dd><p>main content of the email</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mailbox_manager.ClientMailbox.gmail_api_manager">
+<span class="sig-name descname"><span class="pre">gmail_api_manager</span></span><a class="headerlink" href="#mailbox_manager.ClientMailbox.gmail_api_manager" title="Link to this definition">¶</a></dt>
+<dd><p>A Resource object for interacting with the Gmail API service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mailbox_manager.ClientMailbox.path_to_dir">
+<span class="sig-name descname"><span class="pre">path_to_dir</span></span><a class="headerlink" href="#mailbox_manager.ClientMailbox.path_to_dir" title="Link to this definition">¶</a></dt>
+<dd><p>path to a directory to save emails read from the mailbox</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="mailbox_manager.ClientMailbox.authorize">
 <span class="sig-name descname"><span class="pre">authorize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_secrets_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mailbox_manager.ClientMailbox.authorize" title="Link to this definition">¶</a></dt>
@@ -386,14 +474,61 @@ It is called every time the application is being used to delete old mails from t
 <dt class="sig sig-object py" id="classification.Classifier">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">classification.</span></span><span class="sig-name descname"><span class="pre">Classifier</span></span><a class="headerlink" href="#classification.Classifier" title="Link to this definition">¶</a></dt>
 <dd><p>Classifies student mail into one of several predefined categories using different methods.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>res_bayes (int): Result of classification using Naive Bayes.
-res_distilbert (int): Result of classification using DistilBERT.
-res_manual (int): Result of manual classification.
-comparison_compatibility (bool): True if DistilBERT and Naive Bayes agree.
-nb_model(obj): Object that represents naive bayes model</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="classification.Classifier.res_bayes">
+<span class="sig-name descname"><span class="pre">res_bayes</span></span><a class="headerlink" href="#classification.Classifier.res_bayes" title="Link to this definition">¶</a></dt>
+<dd><p>Result of classification using Naive Bayes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="classification.Classifier.res_distilbert">
+<span class="sig-name descname"><span class="pre">res_distilbert</span></span><a class="headerlink" href="#classification.Classifier.res_distilbert" title="Link to this definition">¶</a></dt>
+<dd><p>Result of classification using DistilBERT.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="classification.Classifier.res_manual">
+<span class="sig-name descname"><span class="pre">res_manual</span></span><a class="headerlink" href="#classification.Classifier.res_manual" title="Link to this definition">¶</a></dt>
+<dd><p>Result of manual classification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="classification.Classifier.comparison_compatibility">
+<span class="sig-name descname"><span class="pre">comparison_compatibility</span></span><a class="headerlink" href="#classification.Classifier.comparison_compatibility" title="Link to this definition">¶</a></dt>
+<dd><p>True if DistilBERT and Naive Bayes agree.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="classification.Classifier.nb_model">
+<span class="sig-name descname"><span class="pre">nb_model</span></span><a class="headerlink" href="#classification.Classifier.nb_model" title="Link to this definition">¶</a></dt>
+<dd><p>Object that represents naive bayes model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>obj</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="classification.Classifier.classify_bayes">
 <span class="sig-name descname"><span class="pre">classify_bayes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classification.Classifier.classify_bayes" title="Link to this definition">¶</a></dt>
@@ -439,13 +574,50 @@ default data including office hours, scholarships, and student records.</p>
 <dt class="sig sig-object py" id="database_manager.DeansOfficeHours">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database_manager.</span></span><span class="sig-name descname"><span class="pre">DeansOfficeHours</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database_manager.DeansOfficeHours" title="Link to this definition">¶</a></dt>
 <dd><p>SQLAlchemy ORM model representing Dean’s Office working hours.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): Primary key, autoincremented.
-weekday (str): Name of the weekday (e.g., ‘Monday’).
-opening (datetime.time): Office opening time.
-closing (datetime.time): Office closing time.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database_manager.DeansOfficeHours.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database_manager.DeansOfficeHours.id" title="Link to this definition">¶</a></dt>
+<dd><p>Primary key, autoincremented.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database_manager.DeansOfficeHours.weekday">
+<span class="sig-name descname"><span class="pre">weekday</span></span><a class="headerlink" href="#database_manager.DeansOfficeHours.weekday" title="Link to this definition">¶</a></dt>
+<dd><p>Name of the weekday (e.g., ‘Monday’).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database_manager.DeansOfficeHours.opening">
+<span class="sig-name descname"><span class="pre">opening</span></span><a class="headerlink" href="#database_manager.DeansOfficeHours.opening" title="Link to this definition">¶</a></dt>
+<dd><p>Office opening time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>datetime.time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database_manager.DeansOfficeHours.closing">
+<span class="sig-name descname"><span class="pre">closing</span></span><a class="headerlink" href="#database_manager.DeansOfficeHours.closing" title="Link to this definition">¶</a></dt>
+<dd><p>Office closing time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>datetime.time</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="database_manager.DeansOfficeHours.fill">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database_manager.DeansOfficeHours.fill" title="Link to this definition">¶</a></dt>
@@ -486,13 +658,50 @@ table instances to dictionary representation.</p>
 <dt class="sig sig-object py" id="database_manager.ScholarshipValue">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database_manager.</span></span><span class="sig-name descname"><span class="pre">ScholarshipValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database_manager.ScholarshipValue" title="Link to this definition">¶</a></dt>
 <dd><p>ORM model representing scholarship types and values.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): Primary key, autoincremented.
-kind (str): Type of scholarship (e.g., ‘rectors scholarship’).
-money (float): Amount of money awarded.
-grade_level (float): Minimum grade level required, nullable.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database_manager.ScholarshipValue.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database_manager.ScholarshipValue.id" title="Link to this definition">¶</a></dt>
+<dd><p>Primary key, autoincremented.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database_manager.ScholarshipValue.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><a class="headerlink" href="#database_manager.ScholarshipValue.kind" title="Link to this definition">¶</a></dt>
+<dd><p>Type of scholarship (e.g., ‘rectors scholarship’).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database_manager.ScholarshipValue.money">
+<span class="sig-name descname"><span class="pre">money</span></span><a class="headerlink" href="#database_manager.ScholarshipValue.money" title="Link to this definition">¶</a></dt>
+<dd><p>Amount of money awarded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database_manager.ScholarshipValue.grade_level">
+<span class="sig-name descname"><span class="pre">grade_level</span></span><a class="headerlink" href="#database_manager.ScholarshipValue.grade_level" title="Link to this definition">¶</a></dt>
+<dd><p>Minimum grade level required, nullable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="database_manager.ScholarshipValue.table_to_dict">
 <span class="sig-name descname"><span class="pre">table_to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database_manager.ScholarshipValue.table_to_dict" title="Link to this definition">¶</a></dt>
@@ -510,12 +719,39 @@ grade_level (float): Minimum grade level required, nullable.</p>
 <dt class="sig sig-object py" id="database_manager.StudentList">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database_manager.</span></span><span class="sig-name descname"><span class="pre">StudentList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database_manager.StudentList" title="Link to this definition">¶</a></dt>
 <dd><p>ORM model representing a student record.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>student_id (str): Primary key student identifier.
-name (str): Student’s first name.
-surname (str): Student’s surname.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database_manager.StudentList.student_id">
+<span class="sig-name descname"><span class="pre">student_id</span></span><a class="headerlink" href="#database_manager.StudentList.student_id" title="Link to this definition">¶</a></dt>
+<dd><p>Primary key student identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database_manager.StudentList.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#database_manager.StudentList.name" title="Link to this definition">¶</a></dt>
+<dd><p>Student’s first name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database_manager.StudentList.surname">
+<span class="sig-name descname"><span class="pre">surname</span></span><a class="headerlink" href="#database_manager.StudentList.surname" title="Link to this definition">¶</a></dt>
+<dd><p>Student’s surname.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="database_manager.StudentList.table_to_dict">
 <span class="sig-name descname"><span class="pre">table_to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database_manager.StudentList.table_to_dict" title="Link to this definition">¶</a></dt>
@@ -534,11 +770,28 @@ surname (str): Student’s surname.</p>
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">get_essential_info_from_text.</span></span><span class="sig-name descname"><span class="pre">NameSearcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_essential_info_from_text.NameSearcher" title="Link to this definition">¶</a></dt>
 <dd><p>A class to perform Named Entity Recognition (NER) on text input and
 search for matching student names in a mail.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>pipe (transformers.Pipeline): A Hugging Face transformers pipeline for token classification (NER).
-session (SQLAlchemy.Session): Database session for querying student records.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="get_essential_info_from_text.NameSearcher.pipe">
+<span class="sig-name descname"><span class="pre">pipe</span></span><a class="headerlink" href="#get_essential_info_from_text.NameSearcher.pipe" title="Link to this definition">¶</a></dt>
+<dd><p>A Hugging Face transformers pipeline for token classification (NER).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>transformers.Pipeline</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="get_essential_info_from_text.NameSearcher.session">
+<span class="sig-name descname"><span class="pre">session</span></span><a class="headerlink" href="#get_essential_info_from_text.NameSearcher.session" title="Link to this definition">¶</a></dt>
+<dd><p>Database session for querying student records.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SQLAlchemy.Session</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="get_essential_info_from_text.NameSearcher.text_ner_analizer">
 <span class="sig-name descname"><span class="pre">text_ner_analizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">txt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_essential_info_from_text.NameSearcher.text_ner_analizer" title="Link to this definition">¶</a></dt>
@@ -589,8 +842,6 @@ that exist in the database, then retrieves the corresponding student record.</p>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MailResponder Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#main.Application"><code class="docutils literal notranslate"><span class="pre">Application</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mailbox_manager.ClientMailbox"><code class="docutils literal notranslate"><span class="pre">ClientMailbox</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mailbox_manager.EmailReader"><code class="docutils literal notranslate"><span class="pre">EmailReader</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mailbox_manager.MailSender"><code class="docutils literal notranslate"><span class="pre">MailSender</span></code></a></li>

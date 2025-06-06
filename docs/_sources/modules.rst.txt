@@ -2,12 +2,17 @@ MailResponder Modules
 =====================
 
 .. automodule:: main
-    :members:
+   :members:
+   :no-index:
+
 .. automodule:: mailbox_manager
-    :members:
+   :members:
+
 .. automodule:: classification
-    :members:
+   :members:
+
 .. automodule:: database_manager
-    :members:
+   :members:
+
 .. automodule:: get_essential_info_from_text
-    :members:
+   :members:
